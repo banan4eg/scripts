@@ -23,13 +23,13 @@ local fa_glyph_ranges = imgui.ImGlyphRanges({ fa.min_range, fa.max_range })
 
 update_state = false
 
-local script_vers = 1
-local script_vers_text = "1.00"
+local script_vers = 2
+local script_vers_text = "1.05"
 
 local update_url = 'https://raw.githubusercontent.com/banan4eg/scripts/master/ASAcfg.ini'
 local update_path = getWorkingDirectory() .. '/config/ASAcfg.ini'
 
-local script_url = ''
+local script_url = 'https://raw.githubusercontent.com/banan4eg/scripts/master/AutoSchool.lua'
 local script_path = thisScript().path
 
 ----     IniCFG      ----
@@ -176,6 +176,17 @@ function main()
 
     --repeat	wait(0)	until sampIsLocalPlayerSpawned()
     while true do wait(0)
+
+    if update_state then
+        downloadUrlToFile(script_url, script_path, function(id, status)
+            if status == dlstatus.STATUS_ENDDOWNLOADDATA then
+                sampAddChatMessage('{58ACFA}ASA{FFFFFF} • Скрипт {58ACFA}успешно {FFFFFF}обновлен', -1)
+                thisScript():reload()
+            end
+        end)
+        break
+    end
+
 
  -- Dincamic variables --
     _, myid = sampGetPlayerIdByCharHandle(PLAYER_PED)
@@ -324,7 +335,7 @@ function MainMenuFunc()
 end
 
 function ExamFunc()
-    sampSendChat('/exam')
+    sampSendChat('Получилось!')
 end
 
 function TimeFunc()
