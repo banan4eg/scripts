@@ -23,8 +23,8 @@ local fa_glyph_ranges = imgui.ImGlyphRanges({ fa.min_range, fa.max_range })
 
 update_state = false
 
-local script_vers = 1
-local script_vers_text = '1.01'
+local script_vers = 2
+local script_vers_text = '1.02'
 
 local update_url = 'https://raw.githubusercontent.com/banan4eg/scripts/master/ASAcfg.ini'
 local update_path = getWorkingDirectory() .. '/config/ASAcfg.ini'
